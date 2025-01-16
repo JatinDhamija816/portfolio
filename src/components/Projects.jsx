@@ -14,6 +14,14 @@ const Projects = () => {
       githubLink: "https://github.com/JatinDhamija816/taskify",
     },
     {
+      name: "hospital-food-management",
+      description:
+        "A streamlined system for hospitals to manage patient diets, meal preparation, and deliveries. Admins can manage patients, diet charts, staff, and riders, while staff and riders can track and update task statuses in real-time. Built for efficiency and simplicity.",
+      technologies:
+        "Vite-React, Node.js, Express, MongoDB, JavaScript, JWT (Access & Refresh Tokens), Tailwind CSS",
+      githubLink: "https://github.com/JatinDhamija816/hospital-food-management",
+    },
+    {
       name: "WordFlow",
       description:
         "A dynamic blogging platform that allows users to share thoughts, write posts with rich text formatting, upload images and videos, and interact through likes and comments. Features include post sorting by likes, comments, date, and topics, along with full CRUD functionality. Built to deliver an engaging and customizable user experience.",

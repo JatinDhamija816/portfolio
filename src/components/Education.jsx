@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
+import { motion } from "framer-motion";
 
 const Education = () => {
   const { darkMode } = useContext(DarkModeContext);
@@ -24,6 +25,7 @@ const Education = () => {
       year: "(2015-2016)",
     },
   ];
+
   return (
     <div
       id="education"
@@ -32,24 +34,34 @@ const Education = () => {
       } `}
     >
       <div className="py-10 px-7 md:max-w-screen-lg">
-        <p className="text-2xl font-semibold py-10 underline">Education</p>
+        <motion.p
+          className="text-3xl font-semibold py-10 underline text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          Education
+        </motion.p>
         <div className="space-y-5">
           {education.map(({ school, course, marks, year }, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`w-full shadow-md p-5 rounded-lg md:w-full duration-200 hover:scale-105 ${
+              className={`w-full shadow-md p-5 rounded-lg md:w-full duration-200 hover:scale-105 hover:shadow-xl transition-all ${
                 darkMode ? "shadow-white" : "shadow-black"
               }`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <div className="flex flex-col sm:flex-row justify-between">
-                <h1 className="font-bold text-lg pr-5">{school}</h1>
-                <p className="">{year}</p>
+                <h1 className="font-bold text-lg sm:text-xl pr-5">{school}</h1>
+                <p className="text-sm sm:text-base">{year}</p>
               </div>
               <div className="mt-2">
-                <h2 className="text-base md:text-lg">{course}</h2>
-                <p className="">{marks}</p>
+                <h2 className="text-base md:text-lg font-medium">{course}</h2>
+                <p className="text-sm md:text-base">{marks}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

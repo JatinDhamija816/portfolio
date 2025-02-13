@@ -8,6 +8,7 @@ import {
 } from "react-icons/si";
 import { useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const { darkMode } = useContext(DarkModeContext);
@@ -43,19 +44,30 @@ const Skills = () => {
       }`}
     >
       <div className="py-10 px-7 md:max-w-screen-lg">
-        <p className="text-2xl font-semibold py-10 underline">Skills</p>
+        <motion.p
+          className="text-3xl font-semibold py-10 underline text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          Skills
+        </motion.p>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {skillData.map((skill, index) => (
-            <div
+            <motion.div
               key={index}
               className={`p-5 shadow-md rounded-lg flex flex-col items-center text-center transform transition hover:scale-105 duration-300 ${
                 darkMode ? "shadow-white" : "shadow-black"
               }`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <div className="text-blue-500 mb-3">{skill.icon}</div>
               <h3 className="text-xl font-semibold">{skill.name}</h3>
               <p className="text-sm mt-2">{skill.category}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

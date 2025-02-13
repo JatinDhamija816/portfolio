@@ -76,6 +76,14 @@ const Navbar = () => {
               darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
             }`}
           >
+            {/* Close Button (Inside Sidebar) */}
+            <button
+              className="absolute top-4 right-4 text-2xl"
+              onClick={() => setIsOpen(false)}
+            >
+              <FaTimes />
+            </button>
+
             {links.map((item) => (
               <motion.div
                 key={item.id}

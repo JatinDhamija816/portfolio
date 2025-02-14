@@ -10,7 +10,7 @@ import Skills from "./components/Skills";
 
 const App = () => {
   return (
-    <div className="bg-white text-black">
+    <div>
       <Navbar />
       <Home />
       <About />

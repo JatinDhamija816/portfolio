@@ -8,118 +8,94 @@ const Experience = () => {
   return (
     <div
       id="experience"
-      className={`min-h-screen flex items-center justify-center ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+      className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
       }`}
     >
-      <div className="py-16 px-7 md:max-w-screen-lg">
-        {/* Title with fade-in animation */}
-        <motion.p
-          className="text-3xl font-semibold py-10 underline text-center"
+      <div className="py-20 max-w-4xl w-full">
+        {/* Title with Glow Effect */}
+        <motion.h2
+          className="text-5xl font-extrabold relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
           Experience
+          <span className="absolute left-1/2 -translate-x-1/2 -bottom-2 h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+        </motion.h2>
+
+        {/* Introduction */}
+        <motion.p
+          className="mt-8 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          I’m <span className="text-blue-400 font-semibold">Jatin Dhamija</span>
+          , a Full Stack Developer skilled in building scalable applications
+          using
+          <span className="text-blue-400">
+            {" "}
+            React, React Native, Node.js, Firebase, and TypeScript
+          </span>
+          . Below is an overview of my latest experience.
         </motion.p>
 
-        <div className="space-y-6">
-          {/* General introduction */}
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            Hello! I’m Jatin Dhamija, a Full Stack Developer with expertise in
-            modern web and mobile technologies. My experience spans across
-            building scalable, efficient applications using tools like React,
-            React Native, Node.js, Express, MongoDB, Firebase, TypeScript, and
-            more.
-          </motion.p>
+        {/* Experience Card */}
+        <motion.div
+          className="mt-8 w-full max-w-3xl p-6 rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] cursor-pointer backdrop-blur-md bg-opacity-80 border border-gray-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
+          <h3 className="text-2xl font-semibold text-blue-400">
+            React Native Developer - 3-Month Internship
+          </h3>
+          <p className="mt-3 text-lg text-gray-400">
+            Developed a feature-rich mobile application, integrating Bluetooth,
+            Wi-Fi, and real-time backend services.
+          </p>
 
-          {/* React Native Mobile App Developer Internship */}
-          <motion.div
-            className="py-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
-            <h3 className="text-xl font-semibold hover:text-blue-500 cursor-pointer">
-              React Native Mobile App Developer - 3-Month Internship
-            </h3>
-            <motion.p
-              className="py-2 text-lg leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.9 }}
-            >
-              During my internship at a startup, I took the lead on developing a
-              full-featured mobile application using React Native, backed by
-              Node.js, Express, Firebase, and TypeScript. The app integrates
-              Bluetooth and Wi-Fi to connect wristbands and manage devices. Some
-              of the key features and technologies I implemented include:
-            </motion.p>
-            <ul className="list-disc list-inside space-y-2">
+          {/* Key Achievements List */}
+          <ul className="mt-4 text-left space-y-2 text-gray-400">
+            {[
+              "Implemented JWT authentication for secure user login.",
+              "Built a multi-device management feature with Bluetooth & Wi-Fi.",
+              "Designed a seamless onboarding process for wristband setup.",
+              "Integrated Firebase Realtime Database for instant data sync.",
+              "Utilized TypeScript for scalable and maintainable code.",
+            ].map((item, index) => (
               <motion.li
+                key={index}
+                className="flex items-center space-x-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.2 }}
+                transition={{ duration: 1, delay: 0.8 + index * 0.2 }}
               >
-                Implemented JWT (JSON Web Token) for secure authentication,
-                generating tokens to manage user login sessions and protect API
-                endpoints.
+                <span className="text-blue-400">●</span>
+                <span>{item}</span>
               </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.4 }}
-              >
-                Built a user-friendly multi-device management feature that
-                allows users to pair and manage multiple wristbands using
-                Bluetooth and Wi-Fi connectivity.
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.6 }}
-              >
-                Designed a multi-step onboarding process for setting up
-                wristbands, ensuring a smooth experience for users.
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.8 }}
-              >
-                Integrated Firebase Realtime Database to store and sync data
-                across devices, ensuring real-time updates and seamless
-                performance.
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 2 }}
-              >
-                Utilized TypeScript to maintain clean, strongly-typed code and
-                improve scalability across both the frontend and backend.
-              </motion.li>
-            </ul>
-          </motion.div>
+            ))}
+          </ul>
+        </motion.div>
 
-          {/* Final reflection */}
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 2.2 }}
-          >
-            This experience enhanced my skills in mobile development, API
-            integration, and backend services. I thrive on solving technical
-            challenges and delivering solutions that prioritize both
-            functionality and user experience.
-          </motion.p>
-        </div>
+        {/* Reflection */}
+        <motion.p
+          className="mt-8 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.8 }}
+        >
+          This experience refined my expertise in **mobile development, API
+          integration, and backend architecture**, helping me deliver
+          high-quality solutions.
+        </motion.p>
+
+        {/* Floating Glow Effects */}
+        {/* <div className="absolute bottom-10 w-72 h-72 bg-blue-500 opacity-20 blur-3xl rounded-full"></div> */}
+        {/* <div className="absolute top-10 right-10 w-40 h-40 bg-purple-500 opacity-20 blur-3xl rounded-full"></div> */}
       </div>
     </div>
   );

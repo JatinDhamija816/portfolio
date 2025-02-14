@@ -1,33 +1,31 @@
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import DarkModeContext from "../context/DarkModeContext";
+import { FaGithub } from "react-icons/fa";
 
 const Projects = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   const projects = [
     {
-      name: "hospital-food-management",
+      name: "Hospital Food Management",
       description:
-        "A streamlined system for hospitals to manage patient diets, meal preparation, and deliveries. Admins can manage patients, diet charts, staff, and riders, while staff and riders can track and update task statuses in real-time. Built for efficiency and simplicity.",
-      technologies:
-        "Vite-React, Node.js, Express, MongoDB, JavaScript, JWT (Access & Refresh Tokens), Tailwind CSS",
+        "A system for hospitals to manage patient diets, meal preparation, and deliveries. Admins can manage diet charts, staff, and riders, while staff and riders track and update tasks in real-time.",
+      technologies: "React, Node.js, Express, MongoDB, JWT, Tailwind CSS",
       githubLink: "https://github.com/JatinDhamija816/hospital-food-management",
     },
     {
-      name: "taskify",
+      name: "Taskify - To-Do App",
       description:
-        "A feature-rich MERN stack To-Do List app with JWT-based authentication, task management (CRUD), sorting and mobile responsiveness. Built for efficiency and a seamless user experience.",
-      technologies:
-        "Vite-React, Node.js, Express, MongoDB, JavaScript, JWT (Access & Refresh Tokens), Tailwind CSS",
+        "A feature-rich MERN stack To-Do List app with JWT authentication, task management (CRUD), sorting, and a seamless mobile experience.",
+      technologies: "React, Node.js, Express, MongoDB, JWT, Tailwind CSS",
       githubLink: "https://github.com/JatinDhamija816/taskify",
     },
     {
-      name: "WordFlow",
+      name: "WordFlow - Blogging Platform",
       description:
-        "A dynamic blogging platform that allows users to share thoughts, write posts with rich text formatting, upload images and videos, and interact through likes and comments. Features include post sorting by likes, comments, date, and topics, along with full CRUD functionality. Built to deliver an engaging and customizable user experience.",
-      technologies:
-        "JavaScript, Vite-React, Node.js, Express, MongoDB, Tailwind CSS, JWT (Access & Refresh Tokens), Cloudinary",
+        "A blogging platform for writing posts with rich text formatting, media uploads, and user interactions through likes and comments.",
+      technologies: "React, Node.js, Express, MongoDB, Cloudinary, JWT",
       githubLink: "https://github.com/JatinDhamija816/word-flow",
     },
   ];
@@ -35,57 +33,61 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className={`min-h-screen flex items-center justify-center ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+      className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
       }`}
     >
-      <div className="py-16 px-7 md:max-w-screen-lg">
-        {/* Section title with fade-in animation */}
-        <motion.p
-          className="text-3xl font-semibold py-10 underline text-center"
+      <div className="py-20 max-w-4xl w-full">
+        {/* Title */}
+        <motion.h2
+          className="text-5xl font-extrabold relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
           Projects
-        </motion.p>
+          <span className="absolute left-1/2 -translate-x-1/2 -bottom-2 h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+        </motion.h2>
 
-        <div className="space-y-8">
+        <div className="space-y-8 mt-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 ${
-                darkMode ? "shadow-white" : "shadow-black"
+              className={`p-6 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 ${
+                darkMode
+                  ? "bg-gray-700 shadow-white/10"
+                  : "bg-white shadow-gray-400/30"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              {/* Project title with hover effect */}
-              <motion.h3
-                className="text-2xl font-semibold hover:text-blue-400 cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
-                {project.name}
-              </motion.h3>
-              {/* Project description */}
-              <motion.p className="mt-2 text-lg">
+              {/* Project Title */}
+              <h3 className="text-2xl font-semibold ">{project.name}</h3>
+
+              {/* Project Description */}
+              <p className="mt-2 text-lg text-gray-400">
                 {project.description}
-              </motion.p>
-              {/* Technologies */}
-              <motion.p className="mt-2 text-sm text-gray-500">
-                <strong>Technologies:</strong> {project.technologies}
-              </motion.p>
-              {/* GitHub link */}
-              <motion.a
+              </p>
+
+              {/* Technologies Used */}
+              <p className="mt-3 text-sm font-medium text-gray-400">
+                <span className="font-semibold">Technologies:</span>{" "}
+                {project.technologies}
+              </p>
+
+              {/* GitHub Link */}
+              <a
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-600 hover:underline mt-3 block"
-                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-2 mt-4 text-blue-400 hover:text-blue-500 hover:underline"
               >
+                <FaGithub className="text-lg" />
                 View on GitHub
-              </motion.a>
+              </a>
             </motion.div>
           ))}
         </div>

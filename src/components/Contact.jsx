@@ -1,16 +1,15 @@
 import { useState, useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { darkMode } = useContext(DarkModeContext);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
-  const [status, setStatus] = useState(""); // For success/error message after form submission
+  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,7 +21,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add custom form validation here if needed
 
     try {
       const response = await fetch("https://getform.io/f/paqgxooa", {
@@ -33,7 +31,7 @@ const Contact = () => {
 
       if (response.ok) {
         setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+        setFormData({ name: "", email: "", message: "" });
       } else {
         setStatus("Failed to send message. Please try again.");
       }
@@ -45,27 +43,42 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className={`min-h-screen flex items-center justify-center ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
-      } `}
+      className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
+      }`}
     >
-      <div className="py-10 px-7 w-full md:max-w-screen-sm">
-        <p className="text-2xl font-semibold py-10 underline text-center">
-          Contact Me
-        </p>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block mb-2" htmlFor="name">
+      <motion.div
+        className={`w-full max-w-lg p-8 rounded-2xl shadow-xl backdrop-blur-md ${
+          darkMode
+            ? "bg-gray-800/60 shadow-white/10"
+            : "bg-white/80 shadow-gray-400/30"
+        }`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Section Title */}
+        <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="relative">
+            <label
+              className="block mb-1 text-md font-medium text-left"
+              htmlFor="name"
+            >
               Your Name
             </label>
             <input
               id="name"
               name="name"
               type="text"
-              className={`input p-2 rounded-md w-full ${
+              className={`w-full px-4 py-3 rounded-lg outline-none transition-all focus:ring-2 ${
                 darkMode
-                  ? "bg-black text-white focus:ring-white"
-                  : "bg-white text-black border-black focus:ring-black"
+                  ? "bg-gray-700 text-white focus:ring-blue-400"
+                  : "bg-gray-200 text-gray-900 focus:ring-blue-600"
               }`}
               value={formData.name}
               onChange={handleChange}
@@ -73,18 +86,21 @@ const Contact = () => {
             />
           </div>
 
-          <div>
-            <label className="block mb-2" htmlFor="email">
+          <div className="relative">
+            <label
+              className="block mb-1 text-md font-medium text-left"
+              htmlFor="email"
+            >
               Your Email
             </label>
             <input
               id="email"
               name="email"
               type="email"
-              className={`input p-2 rounded-md w-full ${
+              className={`w-full px-4 py-3 rounded-lg outline-none transition-all focus:ring-2 ${
                 darkMode
-                  ? "bg-black text-white focus:ring-white"
-                  : "bg-white text-black border-black focus:ring-black"
+                  ? "bg-gray-700 text-white focus:ring-blue-400"
+                  : "bg-gray-200 text-gray-900 focus:ring-blue-600"
               }`}
               value={formData.email}
               onChange={handleChange}
@@ -92,17 +108,21 @@ const Contact = () => {
             />
           </div>
 
-          <div>
-            <label className="block mb-2" htmlFor="message">
+          <div className="relative">
+            <label
+              className="block mb-1 text-md font-medium text-left"
+              htmlFor="message"
+            >
               Your Message
             </label>
             <textarea
               id="message"
               name="message"
-              className={`input p-2 rounded-md w-full ${
+              rows="4"
+              className={`w-full px-4 py-3 rounded-lg outline-none transition-all focus:ring-2 resize-none ${
                 darkMode
-                  ? "bg-black text-white focus:ring-white"
-                  : "bg-white text-black border-black focus:ring-black"
+                  ? "bg-gray-700 text-white focus:ring-blue-400"
+                  : "bg-gray-200 text-gray-900 focus:ring-blue-600"
               }`}
               value={formData.message}
               onChange={handleChange}
@@ -110,26 +130,31 @@ const Contact = () => {
             />
           </div>
 
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="border w-3/4 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition-all duration-300 transform hover:scale-105"
-            >
-              Send Message
-            </button>
-          </div>
+          {/* Submit Button */}
+          <motion.button
+            type="submit"
+            className="w-full py-3 mt-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Send Message
+          </motion.button>
         </form>
 
+        {/* Status Message */}
         {status && (
-          <div
-            className={`mt-6 text-center ${
+          <motion.div
+            className={`mt-4 text-center text-lg font-medium ${
               status.includes("success") ? "text-green-500" : "text-red-500"
             }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <p>{status}</p>
-          </div>
+            {status}
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

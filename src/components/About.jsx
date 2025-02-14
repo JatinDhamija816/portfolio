@@ -8,75 +8,79 @@ const About = () => {
   return (
     <div
       id="about"
-      className={`min-h-screen flex items-center justify-center ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+      className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
       }`}
     >
-      <div className="py-16 px-7 md:max-w-screen-lg">
-        {/* Title with fade-in animation */}
-        <motion.p
-          className="text-3xl font-semibold py-10 underline text-center"
+      <div className="py-20 max-w-4xl w-full">
+        {/* Title with Neon Glow */}
+        <motion.h2
+          className="text-5xl font-extrabold relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          About
+          About Me
+          <span className="absolute left-1/2 -translate-x-1/2 -bottom-2 h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+        </motion.h2>
+
+        {/* About Paragraphs with Floating Animation */}
+        <motion.p
+          className="mt-8 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          Hello! I’m{" "}
+          <span className="text-blue-400 font-semibold">Jatin Dhamija</span>, a
+          passionate Full Stack Developer skilled in crafting modern, scalable
+          web and mobile applications. I work with{" "}
+          <span className="text-blue-400">
+            React, Node.js, Express, MongoDB, Firebase,React Native, JavaScript,
+            TypeScript, and Tailwind CSS
+          </span>
+          .
         </motion.p>
 
-        <div>
-          {/* About Paragraphs with slide-up animations */}
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            Hello! I’m Jatin Dhamija, a dedicated Full Stack Developer with a
-            strong passion for crafting modern, scalable web and mobile
-            applications. I specialize in using technologies such as React,
-            React Native, Node.js, Express, MongoDB, Firebase, TypeScript, and
-            Tailwind CSS to create seamless digital experiences.
-          </motion.p>
+        <motion.p
+          className="mt-4 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
+          I hold a{" "}
+          <span className="text-purple-400 font-semibold">B.Tech in CSE</span>{" "}
+          and have worked on building a full-fledged mobile app using React
+          Native during a 3-month internship, bringing UI designs to life with
+          backend integrations.
+        </motion.p>
 
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
-            I hold a B.Tech in Computer Science and Engineering from Panipat
-            Institute of Engineering and Technology. Recently, I completed a
-            3-month internship where I played a key role in developing a mobile
-            application using React Native for a startup. In this project, I
-            transformed Figma designs into a fully functional app, integrating
-            backend services and ensuring an optimal user experience.
-          </motion.p>
+        <motion.p
+          className="mt-4 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+        >
+          My expertise includes developing intuitive interfaces and optimizing
+          web performance for seamless user experiences.
+        </motion.p>
 
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
-          >
-            My expertise extends to building responsive, user-friendly websites,
-            where I tackle complex challenges by implementing efficient and
-            scalable solutions. Whether it's frontend development or backend
-            architecture, I aim to deliver products that not only meet
-            functional requirements but also offer an intuitive and engaging
-            user experience.
-          </motion.p>
+        <motion.p
+          className="mt-4 text-lg max-w-3xl leading-relaxed text-gray-300 dark:text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+        >
+          Always exploring new technologies, I strive to create efficient,
+          user-friendly applications that solve real-world problems.
+        </motion.p>
 
-          <motion.p
-            className="py-4 text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.2 }}
-          >
-            I’m constantly driven by the pursuit of learning and improving,
-            always striving to stay updated with the latest industry trends to
-            build innovative and high-quality solutions.
-          </motion.p>
-        </div>
+        {/* Floating Glow Effect   side top right purple and middle blue  */}
+
+        {/* <div className="absolute bottom-10 w-72 h-72 bg-blue-500 opacity-20 blur-3xl rounded-full"></div> */}
+        {/* <div className="absolute top-10 right-10 w-40 h-40 bg-purple-500 opacity-20 blur-3xl rounded-full"></div> */}
       </div>
     </div>
   );

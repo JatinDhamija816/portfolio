@@ -31,8 +31,8 @@ const Education = () => {
       id="education"
       className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
         darkMode
-          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
-          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
+          ? "bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-b from-blue-200 via-white to-blue-200 text-gray-900"
       }`}
     >
       <div className="py-20 max-w-4xl w-full">
@@ -74,10 +74,10 @@ const Education = () => {
                     {year}
                   </span>
                 </div>
-                <p className="text-base md:text-lg font-medium mt-2 text-left">
+                <p className="text-base md:text-lg font-medium mt-2 md:text-left">
                   {course}
                 </p>
-                <p className="text-sm md:text-base text-gray-500 text-left">
+                <p className="text-sm md:text-base text-gray-500 md:text-left">
                   {marks}
                 </p>
               </div>

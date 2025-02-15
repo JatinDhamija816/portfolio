@@ -23,8 +23,8 @@ const Home = () => {
       id="home"
       className={`min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden transition-colors duration-500 ${
         darkMode
-          ? "bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white"
-          : "bg-gradient-to-br from-blue-200 via-white to-blue-200 text-gray-900"
+          ? "bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white"
+          : "bg-gradient-to-b from-blue-200 via-white to-blue-200 text-gray-900"
       }`}
     >
       {/* Name with Typing Effect */}

@@ -5,6 +5,7 @@ import {
   SiTailwindcss,
   SiMongodb,
   SiExpress,
+  SiMysql,
 } from "react-icons/si";
 import { useContext } from "react";
 import DarkModeContext from "../context/DarkModeContext";
@@ -30,8 +31,8 @@ const Skills = () => {
     { name: "Node.js", icon: <FaNodeJs size={30} />, category: "Backend" },
     { name: "Express", icon: <SiExpress size={30} />, category: "Backend" },
     { name: "JWT", icon: <FaCloud size={30} />, category: "Backend" },
+    { name: "SQL", icon: <SiMysql size={30} />, category: "Database" },
     { name: "MongoDB", icon: <SiMongodb size={30} />, category: "Database" },
-    { name: "Cloudinary", icon: <FaCloud size={30} />, category: "DevOps" },
     { name: "Git", icon: <FaGitAlt size={30} />, category: "Version Control" },
     { name: "Postman", icon: <SiPostman size={30} />, category: "Testing" },
   ];
